@@ -2,6 +2,16 @@
 
 MyCows is a project created on 23 Mar 2020, the initial idea of the project is a application to manage milk cows on a farm. The objective is create a app, web and api application, with intention to studie, pratice and help people to manage your farm with a open-source project. 
 
+## 🔥 Technology
+
+- Java
+- Maven
+- Spring Boot
+- Spring Data JPA
+- JavaScript
+- ReactJS
+
+
 ## 💻 Commit
 
 Commit messages must follow the following pattern...
