@@ -20,3 +20,6 @@ spring:
     liquibase:
       change-log: classpath:/liquibase/liquibase-changelog.yml
       contexts: ${spring.profiles.active}
+
+sumicity:
+  environment: DEV
