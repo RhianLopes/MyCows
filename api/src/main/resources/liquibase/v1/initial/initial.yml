@@ -1,0 +1,13 @@
+databaseChangeLog:
+- changeSet:
+    id: ddl-initial
+    author: rhian.costa
+    runInTransaction: false
+    runOnChange: true
+    changes:
+      - sqlFile:
+          encoding: utf8
+          path: ddl-initial.sql
+          relativeToChangelogFile: true
+          splitStatements: true
+          stripComments: true

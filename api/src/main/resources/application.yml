@@ -1,0 +1,22 @@
+server:
+  port: 8000
+  servlet:
+    context-path: /my-cows
+
+spring:
+  profiles:
+    active: @activatedProperties@
+  banner:
+    location: classpath:/banner/bannername.txt
+    datasource:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://${MY_COWS_HOST:10.99.1.97}:3306/my_cows_db?useTimezone=true&serverTimezone=America/Belem&createDatabaseIfNotExist=true
+      username: ${SUMICITY_DB_USER:root}
+      password: ${SUMICITY_DB_PASS:toor}
+    jpa:
+      database-platform: org.hibernate.dialect.MySQL5Dialect
+      show-sql: true
+      properties.hibernate.format_sql: true
+    liquibase:
+      change-log: classpath:/liquibase/liquibase-changelog.yml
+      contexts: ${spring.profiles.active}
