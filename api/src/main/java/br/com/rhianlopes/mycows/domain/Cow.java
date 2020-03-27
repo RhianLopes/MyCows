@@ -1,7 +1,6 @@
 package br.com.rhianlopes.mycows.domain;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sun.istack.NotNull;
 import lombok.Data;
 import lombok.experimental.Accessors;

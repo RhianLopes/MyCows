@@ -6,16 +6,14 @@ import com.sun.istack.NotNull;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.Size;
 import java.time.LocalDate;
 
 @Data
 @Entity
 @Accessors(chain = true)
+@Inheritance(strategy = InheritanceType.JOINED)
 public class User {
 
     @Id

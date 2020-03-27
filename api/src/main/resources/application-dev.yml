@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:mysql://${MY_COWS_HOST:localhost}:3306/my_cows_db?useTimezone=true&serverTimezone=America/Belem&createDatabaseIfNotExist=true
+    url: jdbc:mysql://localhost:3306/my_cows_db?useTimezone=true&serverTimezone=America/Belem&createDatabaseIfNotExist=true
     username: ${SUMICITY_DB_USER:root}
     password: ${SUMICITY_DB_PASS:toor}
 
