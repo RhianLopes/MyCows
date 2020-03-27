@@ -13,29 +13,23 @@ import java.time.LocalDate;
 @Data
 @Entity
 @Accessors(chain = true)
-@Inheritance(strategy = InheritanceType.JOINED)
-public class User {
+public class Farm {
 
     @Id
-    @JsonIgnore
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotNull
-    @Size(max = 100)
-    private String email;
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 
     @NotNull
     @Size(max = 200)
     private String name;
 
     @NotNull
-    @Size(max = 512)
-    private String password;
-
-    @NotNull
-    @Size(max = 30)
-    private String phone;
+    @Size(max = 500)
+    private String address;
 
     @NotNull
     @JsonFormat(pattern = "yyyy-MM-dd")

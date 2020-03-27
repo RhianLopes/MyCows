@@ -1,7 +1,6 @@
 package br.com.rhianlopes.mycows.domain;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sun.istack.NotNull;
 import lombok.Data;
 import lombok.experimental.Accessors;
@@ -13,29 +12,30 @@ import java.time.LocalDate;
 @Data
 @Entity
 @Accessors(chain = true)
-@Inheritance(strategy = InheritanceType.JOINED)
-public class User {
+public class Cow {
 
     @Id
-    @JsonIgnore
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotNull
-    @Size(max = 100)
-    private String email;
+    @ManyToOne
+    @JoinColumn(name = "farm_id")
+    private Farm farm;
 
     @NotNull
-    @Size(max = 200)
+    @Size(max = 100)
     private String name;
 
     @NotNull
-    @Size(max = 512)
-    private String password;
+    @Size(max = 100)
+    private String code;
 
     @NotNull
-    @Size(max = 30)
-    private String phone;
+    @Size(max = 100)
+    private String species;
+
+    @Size(max = 500)
+    private String description;
 
     @NotNull
     @JsonFormat(pattern = "yyyy-MM-dd")
