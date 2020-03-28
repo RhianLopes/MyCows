@@ -1,4 +1,4 @@
-package br.com.rhianlopes.mycows.web.controller;
+package br.com.rhianlopes.mycows.controller;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
