@@ -11,9 +11,6 @@ import org.springframework.stereotype.Service;
 import java.util.Optional;
 import java.util.function.Supplier;
 
-/*
-* Service para obter dados do usuário no contexto de autenticação
-*/
 @Service
 @RequiredArgsConstructor
 public class CustomUserDetailsService implements UserDetailsService {
@@ -33,7 +30,7 @@ public class CustomUserDetailsService implements UserDetailsService {
 
     private User getUser(Supplier<Optional<User>> supplier) {
         return supplier.get().orElseThrow(() ->
-            new UsernameNotFoundException("Usuário não cadastrado")
+            new UsernameNotFoundException("User not registered")
         );
     }
 }

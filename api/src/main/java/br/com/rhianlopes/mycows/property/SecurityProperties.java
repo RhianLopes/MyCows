@@ -18,7 +18,7 @@ public class SecurityProperties {
     @Data
     @Accessors(chain = true)
     public static class JwtProperties {
-        private String security;
+        private String secret;
         private Long expiration;
     }
 

@@ -15,12 +15,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-/**
- * Obtém o token do header do request
- * Obtém o usuário através do token
- * Define a autenticação no contexto atual
- */
-
 @Component
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
@@ -32,20 +26,12 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
-        // obtém token do header
-        String jwt = getJwt(request);
+        final String jwt = getJwt(request);
 
-        // obtém id do usuário logado através do jwt
         jwtTokenProvider.getUserId(jwt).ifPresent(id -> {
-
-            // obtém usuário do banco de dados através do seu id
             UserDetails user = customUserDetailsService.loadUserById(id);
-
-            // cria uma instância de uma autenticação por usuário e senha, setando os perfis
             UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(user, null, user.getAuthorities());
             authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
-
-            // atualiza o contexto de segurança do Spring com a nova autenticação
             SecurityContextHolder.getContext().setAuthentication(authentication);
         });
 

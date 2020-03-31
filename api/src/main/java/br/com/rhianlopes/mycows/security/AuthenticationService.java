@@ -7,10 +7,6 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
-/*
-* Service para iniciar um novo processo de autenticação
-* */
-
 @Service
 public class AuthenticationService {
 
