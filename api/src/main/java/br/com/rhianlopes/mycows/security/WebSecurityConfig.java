@@ -18,17 +18,17 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 @Configuration
 @EnableWebSecurity
+@EnableGlobalMethodSecurity(
+        securedEnabled = true,
+        jsr250Enabled = true,
+        prePostEnabled = true
+)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Value("${security.public.path}")
     private String publicPath;
 
     @Autowired
-    @EnableGlobalMethodSecurity(
-            securedEnabled = true,
-            jsr250Enabled = true,
-            prePostEnabled = true
-    )
     private CustomUserDetailsService customUserDetailsService;
 
     @Autowired
@@ -64,27 +64,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
             .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
             .and()
             .authorizeRequests()
-
-            // tudo que estiver a partir de "/public/**"
-            // está permitido, mesmo sem autenticação
-
             .antMatchers(publicPath)
             .permitAll()
-
             .antMatchers("/h2-console/**")
             .permitAll()
-
-            // tudo que estiver a partir de "/admin/**"
-            // está permitido apenas para o perfil ADMIN
             .antMatchers("/admin/**")
             .hasRole("ADMIN")
-
-            // qualquer outro request
-            // está permitido desde que esteja autenticado
             .anyRequest()
             .authenticated()
-
-            // Libera o Swagger
             .antMatchers("/webjars/springfox-swagger-ui/", "/swagger-ui.html", "/swagger-resources/", "/v2/api-docs/")
                 .permitAll()
         ;

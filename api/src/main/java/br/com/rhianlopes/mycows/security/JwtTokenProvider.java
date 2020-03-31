@@ -24,7 +24,6 @@ public class JwtTokenProvider {
     @Value("${security.jwt.expiration}")
     private int jwtExpiration;
 
-    // cria token a partir de um usuário autenticado
     public String generateToken(Authentication authentication) {
 
         UserPrincipal userPrincipal = (UserPrincipal) authentication.getPrincipal();
