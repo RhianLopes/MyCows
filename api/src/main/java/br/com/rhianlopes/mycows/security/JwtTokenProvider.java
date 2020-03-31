@@ -37,9 +37,7 @@ public class JwtTokenProvider {
             .setIssuedAt(now)
             .setExpiration(expiryDate)
             .signWith(SignatureAlgorithm.HS512, jwtSecret)
-
-            .claim("dataNascimento", userPrincipal.getDataNascimento())
-
+            .claim("email", userPrincipal.getEmail())
             .compact();
     }
 

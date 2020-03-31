@@ -1,8 +1,8 @@
 package br.com.rhianlopes.mycows.security;
 
+import br.com.rhianlopes.mycows.domain.User;
 import br.com.rhianlopes.mycows.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;

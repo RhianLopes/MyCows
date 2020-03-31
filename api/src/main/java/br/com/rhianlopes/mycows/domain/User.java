@@ -10,6 +10,8 @@ import javax.persistence.*;
 import javax.validation.constraints.Size;
 import java.time.LocalDate;
 
+import static br.com.rhianlopes.mycows.domain.RoleType.*;
+
 @Data
 @Entity
 @Accessors(chain = true)
@@ -44,4 +46,8 @@ public class User {
     @NotNull
     @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate updatedAt;
+
+    public RoleType getProfile() {
+        return USER;
+    }
 }

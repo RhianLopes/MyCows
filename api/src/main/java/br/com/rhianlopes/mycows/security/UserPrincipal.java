@@ -1,19 +1,16 @@
 package br.com.rhianlopes.mycows.security;
 
-import java.math.BigDecimal;
-import java.time.LocalDate;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.List;
-
-import br.com.cwi.crescer.api.domain.Preferencia;
-import br.com.cwi.crescer.api.domain.Usuario;
+import br.com.rhianlopes.mycows.domain.User;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import java.time.LocalDate;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.List;
 
 
 @Data
@@ -25,58 +22,35 @@ public class UserPrincipal implements UserDetails {
 
     private Long id;
 
-    private String nome;
-
     private String email;
 
-    private String foto;
+    private String name;
 
     @JsonIgnore
-    private String senha;
+    private String password;
 
-    private BigDecimal latitude;
+    private String phone;
 
-    private BigDecimal longitude;
+    private LocalDate createdAt;
 
-    private Preferencia preferencia;
-
-    private boolean ativo;
-
-    private LocalDate dataNascimento;
+    private LocalDate updatedAt;
 
     private Collection<? extends GrantedAuthority> authorities;
 
-    public UserPrincipal(Long id, String nome, String email, String foto, String senha,
-                         boolean ativo, BigDecimal longitude, BigDecimal latitude, Preferencia preferencia,
-                         Collection<? extends GrantedAuthority> authorities) {
-        this.id = id;
-        this.nome = nome;
-        this.email = email;
-        this.foto = foto;
-        this.senha = senha;
-        this.longitude = longitude;
-        this.latitude = latitude;
-        this.preferencia = preferencia;
-        this.ativo = ativo;
-        this.authorities = authorities;
-    }
-
-    public static UserPrincipal create(Usuario usuario) {
+    public static UserPrincipal create(User user) {
 
         List<GrantedAuthority> authorities = Arrays.asList(
-                new SimpleGrantedAuthority(usuario.getPerfil().getRole())
+                new SimpleGrantedAuthority(user.getProfile().getRole())
         );
 
         return new UserPrincipal(
-                usuario.getId(),
-                usuario.getNome(),
-                usuario.getEmail(),
-                usuario.getFoto(),
-                usuario.getSenha(),
-                usuario.isAtivo(),
-                usuario.getLongitude(),
-                usuario.getLatitude(),
-                usuario.getPreferencia(),
+                user.getId(),
+                user.getName(),
+                user.getEmail(),
+                user.getPassword(),
+                user.getPhone(),
+                user.getCreatedAt(),
+                user.getCreatedAt(),
                 authorities
         );
     }
@@ -90,7 +64,7 @@ public class UserPrincipal implements UserDetails {
     @Override
     @JsonIgnore
     public String getPassword() {
-        return senha;
+        return password;
     }
 
     @Override
@@ -100,12 +74,12 @@ public class UserPrincipal implements UserDetails {
 
     @Override
     public boolean isAccountNonExpired() {
-        return ativo;
+        return false;
     }
 
     @Override
     public boolean isAccountNonLocked() {
-        return ativo;
+        return false;
     }
 
     @Override
@@ -115,7 +89,7 @@ public class UserPrincipal implements UserDetails {
 
     @Override
     public boolean isEnabled() {
-        return ativo;
+        return true;
     }
 
 }
