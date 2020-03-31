@@ -1,12 +1,12 @@
-package br.com.rhianlopes.mycows.security;
+package br.com.rhianlopes.mycows.config.security;
 
+import br.com.rhianlopes.mycows.domain.security.UserPrincipal;
 import br.com.rhianlopes.mycows.property.SecurityProperties;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Component;
 

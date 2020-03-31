@@ -1,7 +1,8 @@
-package br.com.rhianlopes.mycows.security;
+package br.com.rhianlopes.mycows.service.security;
 
 import br.com.rhianlopes.mycows.domain.User;
 import br.com.rhianlopes.mycows.repository.UserRepository;
+import br.com.rhianlopes.mycows.domain.security.UserPrincipal;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

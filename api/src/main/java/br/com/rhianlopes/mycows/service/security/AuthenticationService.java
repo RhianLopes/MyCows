@@ -1,5 +1,6 @@
-package br.com.rhianlopes.mycows.security;
+package br.com.rhianlopes.mycows.service.security;
 
+import br.com.rhianlopes.mycows.config.security.JwtTokenProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;

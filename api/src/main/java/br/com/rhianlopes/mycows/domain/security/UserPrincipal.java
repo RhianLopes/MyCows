@@ -1,4 +1,4 @@
-package br.com.rhianlopes.mycows.security;
+package br.com.rhianlopes.mycows.domain.security;
 
 import br.com.rhianlopes.mycows.domain.User;
 import com.fasterxml.jackson.annotation.JsonIgnore;

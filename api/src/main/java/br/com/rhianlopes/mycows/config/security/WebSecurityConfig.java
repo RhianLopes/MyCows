@@ -1,9 +1,9 @@
-package br.com.rhianlopes.mycows.security;
+package br.com.rhianlopes.mycows.config.security;
 
+import br.com.rhianlopes.mycows.config.security.JwtAuthenticationFilter;
 import br.com.rhianlopes.mycows.property.SecurityProperties;
+import br.com.rhianlopes.mycows.service.security.CustomUserDetailsService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
