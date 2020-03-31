@@ -12,6 +12,9 @@ import java.time.LocalDate;
 
 import static br.com.rhianlopes.mycows.domain.RoleType.*;
 
+/**
+ * @author rhian.costa
+ */
 @Data
 @Entity
 @Accessors(chain = true)

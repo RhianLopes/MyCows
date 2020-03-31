@@ -12,6 +12,9 @@ import org.springframework.stereotype.Service;
 import java.util.Optional;
 import java.util.function.Supplier;
 
+/**
+ * @author rhian.costa
+ */
 @Service
 @RequiredArgsConstructor
 public class CustomUserDetailsService implements UserDetailsService {

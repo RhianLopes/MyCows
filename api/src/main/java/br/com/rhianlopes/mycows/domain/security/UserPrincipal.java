@@ -12,7 +12,9 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
-
+/**
+ * @author rhian.costa
+ */
 @Data
 @Builder
 @AllArgsConstructor

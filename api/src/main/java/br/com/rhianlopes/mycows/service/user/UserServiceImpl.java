@@ -5,6 +5,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+/**
+ * @author rhian.costa
+ */
 @Service
 @RequiredArgsConstructor
 public class UserServiceImpl implements UserService {

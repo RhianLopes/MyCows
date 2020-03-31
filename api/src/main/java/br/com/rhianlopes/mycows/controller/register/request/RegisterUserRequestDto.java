@@ -9,6 +9,9 @@ import lombok.experimental.Accessors;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Size;
 
+/**
+ * @author rhian.costa
+ */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor

@@ -4,6 +4,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * @author rhian.costa
+ */
 @RestController
 public class MyCowsApiController {
 

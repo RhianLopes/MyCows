@@ -5,6 +5,9 @@ import lombok.experimental.Accessors;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
+/**
+ * @author rhian.costa
+ */
 @Data
 @Component
 @Accessors(chain = true)

@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
 
+/**
+ * @author rhian.costa
+ */
 @RestController
 @RequiredArgsConstructor
 @RequestMapping(value = "/register")

@@ -7,6 +7,9 @@ import lombok.experimental.Accessors;
 
 import javax.validation.constraints.NotEmpty;
 
+/**
+ * @author rhian.costa
+ */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor

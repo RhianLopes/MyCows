@@ -17,6 +17,9 @@ import static java.lang.Long.parseLong;
 import static java.util.Optional.empty;
 import static java.util.Optional.ofNullable;
 
+/**
+ * @author rhian.costa
+ */
 @Component
 @RequiredArgsConstructor
 public class JwtTokenProvider {
