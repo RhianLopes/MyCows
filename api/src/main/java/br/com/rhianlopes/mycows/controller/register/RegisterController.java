@@ -3,6 +3,7 @@ package br.com.rhianlopes.mycows.controller.register;
 import br.com.rhianlopes.mycows.controller.register.request.RegisterUserRequestDto;
 import br.com.rhianlopes.mycows.service.user.UserService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,7 +22,8 @@ public class RegisterController {
     private final UserService userService;
 
     @PostMapping("/user")
-    public Object registerUser(@RequestBody @Valid RegisterUserRequestDto registerUserRequestDto) {
-        return userService.registerUser(registerUserRequestDto);
+    public HttpStatus registerUser(@RequestBody @Valid RegisterUserRequestDto registerUserRequestDto) {
+        userService.registerUser(registerUserRequestDto);
+        return HttpStatus.CREATED;
     }
 }

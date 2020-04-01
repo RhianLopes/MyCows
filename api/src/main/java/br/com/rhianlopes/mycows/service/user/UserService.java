@@ -7,5 +7,5 @@ import br.com.rhianlopes.mycows.controller.register.request.RegisterUserRequestD
  */
 public interface UserService {
 
-    Object registerUser(RegisterUserRequestDto registerUserRequestDto);
+    void registerUser(RegisterUserRequestDto registerUserRequestDto);
 }
