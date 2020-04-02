@@ -16,8 +16,8 @@ import javax.validation.Valid;
  */
 @RestController
 @RequiredArgsConstructor
-@RequestMapping(value = "/register")
-public class RegisterController {
+@RequestMapping("/public/register")
+public class PublicRegisterController {
 
     private final UserService userService;
 

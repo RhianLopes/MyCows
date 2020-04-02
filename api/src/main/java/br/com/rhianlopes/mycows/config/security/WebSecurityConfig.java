@@ -73,10 +73,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
             .permitAll()
             .antMatchers("/admin/**")
             .hasRole("ADMIN")
+            .antMatchers("/webjars/springfox-swagger-ui/", "/swagger-ui.html", "/swagger-resources/", "/v2/api-docs/")
+            .permitAll()
             .anyRequest()
             .authenticated()
-            .antMatchers("/webjars/springfox-swagger-ui/", "/swagger-ui.html", "/swagger-resources/", "/v2/api-docs/")
-                .permitAll()
         ;
 
         http.addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);

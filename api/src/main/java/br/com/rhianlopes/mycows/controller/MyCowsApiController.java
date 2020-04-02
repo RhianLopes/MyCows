@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 /**
  * @author rhian.costa
  */
-@RestController
+@RestController("/public")
 public class MyCowsApiController {
 
     @GetMapping("/verify")
