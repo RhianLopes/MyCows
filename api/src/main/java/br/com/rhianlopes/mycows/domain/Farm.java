@@ -10,6 +10,9 @@ import javax.persistence.*;
 import javax.validation.constraints.Size;
 import java.time.LocalDate;
 
+/**
+ * @author rhian.costa
+ */
 @Data
 @Entity
 @Accessors(chain = true)

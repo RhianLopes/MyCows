@@ -7,9 +7,11 @@ import lombok.experimental.Accessors;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
+/**
+ * @author rhian.costa
+ */
 @Data
 @Entity
 @Accessors(chain = true)

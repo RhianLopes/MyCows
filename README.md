@@ -14,7 +14,7 @@ MyCows is a project created on 23 Mar 2020, the initial idea of the project is a
 
 ## 💻 Commit
 
-Commit messages must follow the following pattern...
+Commit messages must follow the following pattern:
 
 ```
 <type>(<scope>): <topic>

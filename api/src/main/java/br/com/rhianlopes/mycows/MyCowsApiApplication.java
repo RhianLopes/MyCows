@@ -8,6 +8,9 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 import javax.annotation.PostConstruct;
 import java.util.TimeZone;
 
+/**
+ * @author rhian.costa
+ */
 @EnableSwagger2
 @EnableFeignClients
 @SpringBootApplication

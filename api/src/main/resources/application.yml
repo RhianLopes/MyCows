@@ -23,3 +23,10 @@ spring:
 
 sumicity:
   environment: DEV
+
+security:
+  jwt:
+    secret: "my-cows-java-jwt"
+    expiration: 864000000
+  public-link:
+    path: "/public/**"

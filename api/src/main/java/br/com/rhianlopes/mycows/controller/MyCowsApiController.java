@@ -1,10 +1,13 @@
-package br.com.rhianlopes.mycows.web.controller;
+package br.com.rhianlopes.mycows.controller;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController
+/**
+ * @author rhian.costa
+ */
+@RestController("/public")
 public class MyCowsApiController {
 
     @GetMapping("/verify")
