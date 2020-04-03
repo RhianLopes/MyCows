@@ -1,7 +1,9 @@
 package br.com.rhianlopes.mycows.service.user;
 
-import br.com.rhianlopes.mycows.controller.register.request.RegisterUserRequestDto;
+import br.com.rhianlopes.mycows.controller.edit.request.EditUserRequestDto;
+import br.com.rhianlopes.mycows.controller.userregister.request.RegisterUserRequestDto;
 import br.com.rhianlopes.mycows.domain.User;
+import br.com.rhianlopes.mycows.domain.security.UserPrincipal;
 import br.com.rhianlopes.mycows.exception.UserAlreadyExistsException;
 import br.com.rhianlopes.mycows.mapper.UserMapper;
 import br.com.rhianlopes.mycows.repository.UserRepository;
@@ -36,5 +38,18 @@ public class UserServiceImpl implements UserService {
         final User user = userMapper.mapper(requestDto, encodedPassword);
 
         userRepository.save(user);
+    }
+
+    @Override
+    public Object editUser(UserPrincipal userPrincipal, EditUserRequestDto requestDto) {
+
+
+
+        return null;
+    }
+
+    @Override
+    public Object findById(UserPrincipal userPrincipal) {
+        return null;
     }
 }

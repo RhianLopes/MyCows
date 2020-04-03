@@ -1,4 +1,4 @@
-package br.com.rhianlopes.mycows.controller.register.request;
+package br.com.rhianlopes.mycows.controller.userregister.request;
 
 import com.sun.istack.NotNull;
 import lombok.AllArgsConstructor;

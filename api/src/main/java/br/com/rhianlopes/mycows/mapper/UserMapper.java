@@ -1,6 +1,6 @@
 package br.com.rhianlopes.mycows.mapper;
 
-import br.com.rhianlopes.mycows.controller.register.request.RegisterUserRequestDto;
+import br.com.rhianlopes.mycows.controller.userregister.request.RegisterUserRequestDto;
 import br.com.rhianlopes.mycows.domain.User;
 import org.springframework.stereotype.Component;
 

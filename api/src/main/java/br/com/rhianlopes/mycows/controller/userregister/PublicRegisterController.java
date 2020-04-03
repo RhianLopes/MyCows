@@ -1,15 +1,12 @@
-package br.com.rhianlopes.mycows.controller.register;
+package br.com.rhianlopes.mycows.controller.userregister;
 
-import br.com.rhianlopes.mycows.controller.register.request.RegisterUserRequestDto;
+import br.com.rhianlopes.mycows.controller.userregister.request.RegisterUserRequestDto;
 import br.com.rhianlopes.mycows.service.user.UserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
@@ -17,7 +14,7 @@ import javax.validation.Valid;
  * @author rhian.costa
  */
 @RestController
-@Api(tags = "Register")
+@Api(tags = "Public Register")
 @RequiredArgsConstructor
 @RequestMapping("/public/register")
 public class PublicRegisterController {
@@ -25,9 +22,9 @@ public class PublicRegisterController {
     private final UserService userService;
 
     @PostMapping("/user")
+    @ResponseStatus(HttpStatus.CREATED)
     @ApiOperation(value = "Register a User on MyCows")
-    public HttpStatus registerUser(@RequestBody @Valid RegisterUserRequestDto registerUserRequestDto) {
+    public void registerUser(@RequestBody @Valid RegisterUserRequestDto registerUserRequestDto) {
         userService.registerUser(registerUserRequestDto);
-        return HttpStatus.CREATED;
     }
 }
