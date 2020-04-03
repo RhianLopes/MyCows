@@ -2,6 +2,7 @@ package br.com.rhianlopes.mycows.service.user;
 
 import br.com.rhianlopes.mycows.controller.edit.request.EditUserRequestDto;
 import br.com.rhianlopes.mycows.controller.userregister.request.RegisterUserRequestDto;
+import br.com.rhianlopes.mycows.domain.User;
 import br.com.rhianlopes.mycows.domain.security.UserPrincipal;
 
 /**
@@ -11,7 +12,7 @@ public interface UserService {
 
     void registerUser(RegisterUserRequestDto registerUserRequestDto);
 
-    Object editUser(UserPrincipal userPrincipal, EditUserRequestDto editUserRequestDto);
+    User editUser(UserPrincipal userPrincipal, EditUserRequestDto editUserRequestDto);
 
-    Object findById(UserPrincipal userPrincipal);
+    User findById(UserPrincipal userPrincipal);
 }

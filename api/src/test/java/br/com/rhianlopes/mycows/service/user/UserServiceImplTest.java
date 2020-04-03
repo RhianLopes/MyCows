@@ -44,7 +44,7 @@ public class UserServiceImplTest {
         given(passwordEncoder.encode(requestDto.getPassword()))
                 .willReturn(encodedPassword);
 
-        given(userMapper.mapper(requestDto, encodedPassword))
+        given(userMapper.mapperToRegisterNewUser(requestDto, encodedPassword))
                 .willReturn(user);
 
         userService.registerUser(requestDto);

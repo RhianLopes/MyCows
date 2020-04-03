@@ -35,6 +35,7 @@ public class User {
     private String name;
 
     @NotNull
+    @JsonIgnore
     @Size(max = 512)
     private String password;
 
