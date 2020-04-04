@@ -15,4 +15,6 @@ public interface UserService {
     User editUser(UserPrincipal userPrincipal, EditUserRequestDto editUserRequestDto);
 
     User findById(UserPrincipal userPrincipal);
+
+    User findByEmail(String email);
 }

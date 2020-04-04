@@ -56,4 +56,9 @@ public class UserServiceImpl implements UserService {
         return userRepository.findById(userPrincipal.getId())
                 .orElseThrow(() -> new UserNotFoundException("User Not Found!"));
     }
+
+    @Override
+    public User findByEmail(String email) {
+        return null;
+    }
 }
