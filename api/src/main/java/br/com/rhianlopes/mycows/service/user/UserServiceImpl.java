@@ -3,7 +3,6 @@ package br.com.rhianlopes.mycows.service.user;
 import br.com.rhianlopes.mycows.controller.edit.request.EditUserRequestDto;
 import br.com.rhianlopes.mycows.controller.userregister.request.RegisterUserRequestDto;
 import br.com.rhianlopes.mycows.domain.User;
-import br.com.rhianlopes.mycows.domain.security.UserPrincipal;
 import br.com.rhianlopes.mycows.exception.UserAlreadyExistsException;
 import br.com.rhianlopes.mycows.exception.UserNotFoundException;
 import br.com.rhianlopes.mycows.mapper.UserMapper;
@@ -42,9 +41,9 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User editUser(UserPrincipal userPrincipal, EditUserRequestDto requestDto) {
+    public User editUser(Long id, EditUserRequestDto requestDto) {
 
-        final User outdatedUser = findById(userPrincipal);
+        final User outdatedUser = findById(id);
 
         final User user = userMapper.mapperToEditUser(outdatedUser, requestDto);
 
@@ -52,8 +51,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User findById(UserPrincipal userPrincipal) {
-        return userRepository.findById(userPrincipal.getId())
+    public User findById(Long id) {
+        return userRepository.findById(id)
                 .orElseThrow(() -> new UserNotFoundException("User Not Found!"));
     }
 
