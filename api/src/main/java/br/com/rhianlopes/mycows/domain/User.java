@@ -2,11 +2,11 @@ package br.com.rhianlopes.mycows.domain;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.sun.istack.NotNull;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.time.LocalDate;
 
@@ -35,6 +35,7 @@ public class User {
     private String name;
 
     @NotNull
+    @JsonIgnore
     @Size(max = 512)
     private String password;
 

@@ -1,6 +1,7 @@
 package br.com.rhianlopes.mycows.service.security;
 
 import br.com.rhianlopes.mycows.config.security.JwtTokenProvider;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -12,15 +13,14 @@ import org.springframework.stereotype.Service;
  * @author rhian.costa
  */
 @Service
+@RequiredArgsConstructor
 public class AuthenticationService {
 
     private static final String HEADER_PREFIX = "Bearer ";
 
-    @Autowired
-    private AuthenticationManager authenticationManager;
+    private final AuthenticationManager authenticationManager;
 
-    @Autowired
-    private JwtTokenProvider jwtTokenProvider;
+    private final JwtTokenProvider jwtTokenProvider;
 
     public String authenticate(String username, String password) {
         Authentication authentication = authenticationManager.authenticate(
