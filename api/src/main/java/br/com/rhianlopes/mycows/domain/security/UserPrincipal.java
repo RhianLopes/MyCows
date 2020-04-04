@@ -17,7 +17,6 @@ import java.util.List;
  */
 @Data
 @Builder
-@AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode(of = "id")
 public class UserPrincipal implements UserDetails {
@@ -38,6 +37,18 @@ public class UserPrincipal implements UserDetails {
     private LocalDate updatedAt;
 
     private Collection<? extends GrantedAuthority> authorities;
+
+    public UserPrincipal(Long id, String email, String name, String password, String phone,
+                         LocalDate createdAt, LocalDate updatedAt, Collection<? extends GrantedAuthority> authorities) {
+        this.id = id;
+        this.email = email;
+        this.name = name;
+        this.password = password;
+        this.phone = phone;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
+        this.authorities = authorities;
+    }
 
     public static UserPrincipal create(User user) {
 

@@ -28,7 +28,7 @@ public class EditController {
 
     @PutMapping("/user")
     @ApiOperation(value = "Edit User info")
-    public User editUser(@AuthenticationPrincipal UserPrincipal userPrincipal, @RequestBody @Valid EditUserRequestDto editUserRequestDto) {
+    public User editUser(@RequestBody @Valid EditUserRequestDto editUserRequestDto, @AuthenticationPrincipal UserPrincipal userPrincipal) {
         return userService.editUser(userPrincipal, editUserRequestDto);
     }
 }
