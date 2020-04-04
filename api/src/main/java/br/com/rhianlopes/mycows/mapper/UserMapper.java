@@ -6,7 +6,6 @@ import br.com.rhianlopes.mycows.domain.User;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 /**
  * @author rhian.costa

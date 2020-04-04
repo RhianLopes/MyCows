@@ -29,7 +29,7 @@ public class FindController {
     @GetMapping("/logged-user")
     @ApiOperation(value = "Find Logged User")
     public User findOneUser(@AuthenticationPrincipal UserPrincipal userPrincipal) {
-        return userService.findById(userPrincipal);
+        return userService.findById(userPrincipal.getId());
     }
 
     @RolesAllowed({ "ROLE_USER" })
