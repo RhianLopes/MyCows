@@ -1,12 +1,12 @@
-package br.com.rhianlopes.mycows.controller.register.request;
+package br.com.rhianlopes.mycows.controller.edit.request;
 
-import com.sun.istack.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 
 import javax.validation.constraints.Email;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 /**
@@ -16,7 +16,7 @@ import javax.validation.constraints.Size;
 @NoArgsConstructor
 @AllArgsConstructor
 @Accessors(chain = true)
-public class RegisterUserRequestDto {
+public class EditUserRequestDto {
 
     @Email
     @NotNull
@@ -26,10 +26,6 @@ public class RegisterUserRequestDto {
     @NotNull
     @Size(max = 200)
     private String name;
-
-    @NotNull
-    @Size(max = 512)
-    private String password;
 
     @NotNull
     @Size(max = 30)
