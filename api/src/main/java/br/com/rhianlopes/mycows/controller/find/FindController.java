@@ -7,9 +7,9 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import javax.validation.constraints.Email;
 
 /**
  * @author rhian.costa
@@ -22,9 +22,15 @@ public class FindController {
 
     private final UserService userService;
 
-    @PutMapping("/user")
+    @GetMapping("/logged-user")
     @ApiOperation(value = "Find Logged User", tags = "Find One")
     public User findOneUser(@AuthenticationPrincipal UserPrincipal userPrincipal) {
         return userService.findById(userPrincipal);
+    }
+
+    @GetMapping("/user")
+    @ApiOperation(value = "Find User By Email", tags = "Find One")
+    public User findByEmail(@RequestParam(name = "email") @Email String email) {
+        return userService.findByEmail(email);
     }
 }
