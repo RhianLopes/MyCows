@@ -1,5 +1,6 @@
 package br.com.rhianlopes.mycows.service.farm;
 
+import br.com.rhianlopes.mycows.controller.edit.request.EditFarmRequestDto;
 import br.com.rhianlopes.mycows.controller.register.request.RegisterFarmRequestDto;
 import br.com.rhianlopes.mycows.domain.Farm;
 
@@ -9,4 +10,6 @@ import br.com.rhianlopes.mycows.domain.Farm;
 public interface FarmService {
 
     Farm registerFarm(Long userId, RegisterFarmRequestDto registerFarmRequestDto);
+
+    Farm editFarm(EditFarmRequestDto editFarmRequestDto);
 }
