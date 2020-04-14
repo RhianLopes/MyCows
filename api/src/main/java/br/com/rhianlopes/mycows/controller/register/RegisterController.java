@@ -28,7 +28,7 @@ public class RegisterController {
     @PostMapping("/farm")
     @ResponseStatus(HttpStatus.CREATED)
     @ApiOperation(value = "Register a Farm to Logged User")
-    public Farm registerUser(@AuthenticationPrincipal UserPrincipal userPrincipal, @RequestBody @Valid RegisterFarmRequestDto registerFarmRequestDto) {
+    public Farm registerFarm(@AuthenticationPrincipal UserPrincipal userPrincipal, @RequestBody @Valid RegisterFarmRequestDto registerFarmRequestDto) {
         return farmService.registerFarm(userPrincipal.getId(), registerFarmRequestDto);
     }
 }

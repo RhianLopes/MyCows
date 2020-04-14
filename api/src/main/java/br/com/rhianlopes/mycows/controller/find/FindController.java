@@ -35,7 +35,7 @@ public class FindController {
     @RolesAllowed({ "ROLE_USER" })
     @GetMapping("/user")
     @ApiOperation(value = "Find User By Email")
-    public User findByEmail(@RequestParam(name = "email") @Email String email) {
+    public User findUserByEmail(@RequestParam(name = "email") @Email String email) {
         return userService.findByEmail(email);
     }
 }
