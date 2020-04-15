@@ -6,10 +6,10 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 /**
  * @author rhian.costa
  */
-@ResponseStatus(HttpStatus.BAD_REQUEST)
-public abstract class BusinessRuleException extends RuntimeException {
+@ResponseStatus(value = HttpStatus.FORBIDDEN)
+public abstract class ForbiddenException extends RuntimeException {
 
-    public BusinessRuleException(String rule){
-        super(rule);
+    public ForbiddenException(String message) {
+        super(message);
     }
 }
