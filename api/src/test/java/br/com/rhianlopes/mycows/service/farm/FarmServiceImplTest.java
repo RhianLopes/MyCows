@@ -24,6 +24,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.BDDMockito.given;
 
+/**
+ * @author rhian.costa
+ */
 @ExtendWith(MockitoExtension.class)
 public class FarmServiceImplTest {
 

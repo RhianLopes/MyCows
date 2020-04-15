@@ -22,6 +22,9 @@ import java.util.Optional;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.BDDMockito.*;
 
+/**
+ * @author rhian.costa
+ */
 @ExtendWith(MockitoExtension.class)
 public class UserServiceImplTest {
 

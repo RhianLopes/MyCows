@@ -21,7 +21,7 @@ public class MyCowsApiApplication {
 	}
 
 	@PostConstruct
-	public void init()	 {
+	public void init() {
 		TimeZone.setDefault(TimeZone.getTimeZone("America/Belem"));
 	}
 }
