@@ -14,6 +14,9 @@ import java.time.LocalDate;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * @author rhian.costa
+ */
 @ExtendWith(MockitoExtension.class)
 public class UserMapperTest {
 
