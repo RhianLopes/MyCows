@@ -5,11 +5,14 @@ import br.com.rhianlopes.mycows.controller.register.request.RegisterFarmRequestD
 import br.com.rhianlopes.mycows.domain.Farm;
 import br.com.rhianlopes.mycows.domain.User;
 import br.com.rhianlopes.mycows.exception.FarmNotFoundException;
+import br.com.rhianlopes.mycows.exception.UserForbiddenException;
 import br.com.rhianlopes.mycows.mapper.FarmMapper;
 import br.com.rhianlopes.mycows.repository.FarmRepository;
 import br.com.rhianlopes.mycows.service.user.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * @author rhian.costa
@@ -43,5 +46,26 @@ public class FarmServiceImpl implements FarmService {
         final Farm farm = farmMapper.mapperToEditFarm(outdatedFarm, editFarmRequestDto);
 
         return farmRepository.save(farm);
+    }
+
+    @Override
+    public Farm findById(Long userId, Long id) {
+
+        final Farm farm = farmRepository.findById(id)
+                .orElseThrow(() -> new FarmNotFoundException("Farm Not Found!"));
+
+        if (!farm.getUser().getId().equals(userId)) {
+            throw new UserForbiddenException("User Forbidden!");
+        }
+
+        return farm;
+    }
+
+    @Override
+    public List<Farm> findAllByUserId(Long userId) {
+
+        final User user = userService.findById(userId);
+
+        return farmRepository.findAllByUser(user);
     }
 }
