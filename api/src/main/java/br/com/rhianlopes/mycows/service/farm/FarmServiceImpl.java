@@ -49,7 +49,7 @@ public class FarmServiceImpl implements FarmService {
     }
 
     @Override
-    public Farm findById(Long userId, Long id) {
+    public Farm findByIdAndUserId(Long userId, Long id) {
 
         final Farm farm = farmRepository.findById(id)
                 .orElseThrow(() -> new FarmNotFoundException("Farm Not Found!"));

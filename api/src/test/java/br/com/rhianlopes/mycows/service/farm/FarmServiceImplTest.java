@@ -108,7 +108,7 @@ public class FarmServiceImplTest {
         given(farmRepository.findById(id))
                 .willReturn(Optional.of(expectedFarm));
 
-        final Farm resultFarm = farmService.findById(userId, id);
+        final Farm resultFarm = farmService.findByIdAndUserId(userId, id);
         assertEquals(expectedFarm, resultFarm);
     }
 
@@ -127,7 +127,7 @@ public class FarmServiceImplTest {
                 .willReturn(Optional.of(expectedFarm));
 
         final Throwable throwable = assertThrows(UserForbiddenException.class, () ->
-            farmService.findById(userId, id));
+            farmService.findByIdAndUserId(userId, id));
         assertEquals(expectedMessage, throwable.getMessage());
     }
 
@@ -142,7 +142,7 @@ public class FarmServiceImplTest {
                 .willReturn(Optional.empty());
 
         final Throwable throwable = assertThrows(FarmNotFoundException.class, () ->
-                farmService.findById(userId, id));
+                farmService.findByIdAndUserId(userId, id));
         assertEquals(expectedMessage, throwable.getMessage());
     }
 

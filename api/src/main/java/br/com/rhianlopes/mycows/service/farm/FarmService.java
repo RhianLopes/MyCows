@@ -16,7 +16,7 @@ public interface FarmService {
 
     Farm editFarm(EditFarmRequestDto editFarmRequestDto);
 
-    Farm findById(Long userId, Long id);
+    Farm findByIdAndUserId(Long userId, Long id);
 
     List<Farm> findAllByUserId(Long userId);
 }

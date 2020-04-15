@@ -47,7 +47,7 @@ public class FindController {
     @GetMapping("/farm/{id}")
     @ApiOperation(value = "Find Farm By Id")
     public Farm findFarmById(@AuthenticationPrincipal UserPrincipal userPrincipal, @PathVariable("id") Long id) {
-        return farmService.findById(userPrincipal.getId(), id);
+        return farmService.findByIdAndUserId(userPrincipal.getId(), id);
     }
 
     @GetMapping("/farm")
