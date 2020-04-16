@@ -1,8 +1,10 @@
 package br.com.rhianlopes.mycows.controller.find;
 
+import br.com.rhianlopes.mycows.domain.Cow;
 import br.com.rhianlopes.mycows.domain.Farm;
 import br.com.rhianlopes.mycows.domain.User;
 import br.com.rhianlopes.mycows.domain.security.UserPrincipal;
+import br.com.rhianlopes.mycows.service.cow.CowService;
 import br.com.rhianlopes.mycows.service.farm.FarmService;
 import br.com.rhianlopes.mycows.service.user.UserService;
 import io.swagger.annotations.Api;
@@ -30,6 +32,8 @@ public class FindController {
 
     private final FarmService farmService;
 
+    private final CowService cowService;
+
     @RolesAllowed({ "ROLE_USER" })
     @GetMapping("/logged-user")
     @ApiOperation(value = "Find Logged User")
@@ -54,5 +58,11 @@ public class FindController {
     @ApiOperation(value = "Find All Farms By Logged User")
     public List<Farm> findAllFarmsByLoggedUser(@AuthenticationPrincipal UserPrincipal userPrincipal) {
         return farmService.findAllByUserId(userPrincipal.getId());
+    }
+
+    @GetMapping("/cow/{id}")
+    @ApiOperation(value = "Find Cow By Id")
+    public Cow findCowById(@AuthenticationPrincipal UserPrincipal userPrincipal, @PathVariable("id") Long id) {
+        return cowService.findCowByIdAndUserId(id, userPrincipal.getId());
     }
 }
