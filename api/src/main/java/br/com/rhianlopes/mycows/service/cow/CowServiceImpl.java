@@ -36,8 +36,13 @@ public class CowServiceImpl implements CowService {
     }
 
     @Override
-    public Cow editCow(Long userId, EditCowRequestDto editCowRequestDto) {
-        return null;
+    public Cow editCow(Long userId, EditCowRequestDto requestDto) {
+
+        final Cow outdatedCow = findCowByIdAndUserId(requestDto.getId(), userId);
+
+        final Cow cow = cowMapper.mapperToEditCow(outdatedCow, requestDto);
+
+        return cowRepository.save(cow);
     }
 
     @Override

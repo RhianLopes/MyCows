@@ -51,6 +51,6 @@ public class EditController {
     @PutMapping("/cow")
     @ApiOperation(value = "Edit Cow infos")
     public Cow editCow(@RequestBody @Valid EditCowRequestDto editCowRequestDto, @AuthenticationPrincipal UserPrincipal userPrincipal) {
-        return cowService.editFarm(editCowRequestDto, userPrincipal.getId());
+        return cowService.editCow(userPrincipal.getId(), editCowRequestDto);
     }
 }
