@@ -1,10 +1,13 @@
 package br.com.rhianlopes.mycows.controller.edit;
 
+import br.com.rhianlopes.mycows.controller.edit.request.EditCowRequestDto;
 import br.com.rhianlopes.mycows.controller.edit.request.EditFarmRequestDto;
 import br.com.rhianlopes.mycows.controller.edit.request.EditUserRequestDto;
+import br.com.rhianlopes.mycows.domain.Cow;
 import br.com.rhianlopes.mycows.domain.Farm;
 import br.com.rhianlopes.mycows.domain.User;
 import br.com.rhianlopes.mycows.domain.security.UserPrincipal;
+import br.com.rhianlopes.mycows.service.cow.CowService;
 import br.com.rhianlopes.mycows.service.farm.FarmService;
 import br.com.rhianlopes.mycows.service.user.UserService;
 import io.swagger.annotations.Api;
@@ -31,15 +34,23 @@ public class EditController {
 
     private final FarmService farmService;
 
+    private final CowService cowService;
+
     @PutMapping("/user")
-    @ApiOperation(value = "Edit User info")
+    @ApiOperation(value = "Edit User infos")
     public User editUser(@RequestBody @Valid EditUserRequestDto editUserRequestDto, @AuthenticationPrincipal UserPrincipal userPrincipal) {
         return userService.editUser(userPrincipal.getId(), editUserRequestDto);
     }
 
     @PutMapping("/farm")
-    @ApiOperation(value = "Edit Farm info")
+    @ApiOperation(value = "Edit Farm infos")
     public Farm editFarm(@RequestBody @Valid EditFarmRequestDto editUserRequestDto) {
         return farmService.editFarm(editUserRequestDto);
+    }
+
+    @PutMapping("/cow")
+    @ApiOperation(value = "Edit Cow infos")
+    public Cow editCow(@RequestBody @Valid EditCowRequestDto editCowRequestDto, @AuthenticationPrincipal UserPrincipal userPrincipal) {
+        return cowService.editFarm(editCowRequestDto, userPrincipal.getId());
     }
 }
