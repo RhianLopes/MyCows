@@ -66,9 +66,15 @@ public class FindController {
         return cowService.findCowByIdAndUserId(id, userPrincipal.getId());
     }
 
+    @GetMapping("/cow/active/{farmId}")
+    @ApiOperation(value = "Find All Cows By Farm Id And Is Active")
+    public List<Cow> findAllCowsByFarmIdAndIsActive(@AuthenticationPrincipal UserPrincipal userPrincipal, @PathVariable("farmId") Long farmId) {
+        return cowService.findAllByFarmIdAndUserIdAndIsActive(farmId, userPrincipal.getId(), true);
+    }
+
     @GetMapping("/cow/{farmId}")
-    @ApiOperation(value = "Find All Cows By Farm Id")
-    public List<Cow> findAllCowsByFarmId(@AuthenticationPrincipal UserPrincipal userPrincipal, @PathVariable("farmId") Long farmId) {
-        return cowService.findAllByFarmIdAndUserId(farmId, userPrincipal.getId());
+    @ApiOperation(value = "Find All Cows By Farm Id And Is Not Active")
+    public List<Cow> findAllCowsByFarmIdAndIsNotActive(@AuthenticationPrincipal UserPrincipal userPrincipal, @PathVariable("farmId") Long farmId) {
+        return cowService.findAllByFarmIdAndUserIdAndIsActive(farmId, userPrincipal.getId(), false);
     }
 }

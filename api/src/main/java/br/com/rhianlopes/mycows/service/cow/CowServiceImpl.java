@@ -12,6 +12,8 @@ import br.com.rhianlopes.mycows.service.farm.FarmService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * @author rhian.costa
  */
@@ -55,5 +57,13 @@ public class CowServiceImpl implements CowService {
             throw new UserForbiddenException("User Forbidden!");
         }
         return cow;
+    }
+
+    @Override
+    public List<Cow> findAllByFarmIdAndUserIdAndIsActive(Long farmId, Long userId, Boolean isActive) {
+
+        final Farm farm = farmService.findByIdAndUserId(userId, farmId);
+
+        return cowRepository.findAllByFarmAndIsActive(farm, isActive);
     }
 }
