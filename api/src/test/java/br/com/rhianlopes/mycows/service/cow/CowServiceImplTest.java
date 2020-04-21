@@ -19,6 +19,8 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.util.Collections;
+import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -145,6 +147,22 @@ public class CowServiceImplTest {
     }
 
     @Test
-    public void findAllByFarmIdAndUserIdAndIsActive() {
+    public void findAllByFarmIdAndUserIdAndIsActive_withSuccess() {
+
+        final Long farmId = 1L;
+        final Long userId = 1L;
+        final Boolean isActive = true;
+        final Farm farm = Mockito.mock(Farm.class);
+        final Cow cow = Mockito.mock(Cow.class);
+        final List<Cow> expectedCowList = Collections.singletonList(cow);
+
+        given(farmService.findByIdAndUserId(userId, farmId))
+                .willReturn(farm);
+
+        given(cowRepository.findAllByFarmAndIsActive(farm, isActive))
+                .willReturn(expectedCowList);
+
+        final List<Cow> resultCowList = cowService.findAllByFarmIdAndUserIdAndIsActive(farmId, userId, isActive);
+        assertEquals(expectedCowList, resultCowList);
     }
 }
