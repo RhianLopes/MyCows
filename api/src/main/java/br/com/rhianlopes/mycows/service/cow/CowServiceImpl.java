@@ -56,6 +56,7 @@ public class CowServiceImpl implements CowService {
         if (!userId.equals(cow.getFarm().getUser().getId())) {
             throw new UserForbiddenException("User Forbidden!");
         }
+
         return cow;
     }
 
@@ -67,5 +68,18 @@ public class CowServiceImpl implements CowService {
         return cowRepository.findAllByFarmAndIsActive(farm, isActive);
     }
 
-    //TODO: Rhian Lopes da Costa - 20/04/2020 - Do Archive Cow By Cow Id And User Id
+    @Override
+    public Cow archiveCowByIdAndUserId(Long cowId, Long userId) {
+
+        final Cow cow = cowRepository.findById(cowId)
+                .orElseThrow(() -> new CowNotFoundException("Cow Not Found!"));
+
+        if (!userId.equals(cow.getFarm().getUser().getId())) {
+            throw new UserForbiddenException("User Forbidden!");
+        }
+
+        cow.setIsActive(!cow.getIsActive());
+
+        return cowRepository.save(cow);
+    }
 }

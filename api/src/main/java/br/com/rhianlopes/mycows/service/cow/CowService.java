@@ -18,4 +18,6 @@ public interface CowService {
     Cow findCowByIdAndUserId(Long id, Long userId);
 
     List<Cow> findAllByFarmIdAndUserIdAndIsActive(Long farmId, Long userId, Boolean isActive);
+
+    Cow archiveCowByIdAndUserId(Long cowId, Long userId);
 }

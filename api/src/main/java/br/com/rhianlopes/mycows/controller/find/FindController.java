@@ -34,14 +34,12 @@ public class FindController {
 
     private final CowService cowService;
 
-    @RolesAllowed({ "ROLE_USER" })
     @GetMapping("/logged-user")
     @ApiOperation(value = "Find Logged User")
     public User findLoggedUser(@AuthenticationPrincipal UserPrincipal userPrincipal) {
         return userService.findById(userPrincipal.getId());
     }
 
-    @RolesAllowed({ "ROLE_USER" })
     @GetMapping("/user")
     @ApiOperation(value = "Find User By Email")
     public User findUserByEmail(@RequestParam(name = "email") @Email String email) {
