@@ -47,4 +47,7 @@ public class Cow {
     @NotNull
     @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate updatedAt;
+
+    @NotNull
+    private Boolean isActive;
 }

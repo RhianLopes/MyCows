@@ -1,8 +1,10 @@
 package br.com.rhianlopes.mycows.controller.find;
 
+import br.com.rhianlopes.mycows.domain.Cow;
 import br.com.rhianlopes.mycows.domain.Farm;
 import br.com.rhianlopes.mycows.domain.User;
 import br.com.rhianlopes.mycows.domain.security.UserPrincipal;
+import br.com.rhianlopes.mycows.service.cow.CowService;
 import br.com.rhianlopes.mycows.service.farm.FarmService;
 import br.com.rhianlopes.mycows.service.user.UserService;
 import io.swagger.annotations.Api;
@@ -30,14 +32,14 @@ public class FindController {
 
     private final FarmService farmService;
 
-    @RolesAllowed({ "ROLE_USER" })
+    private final CowService cowService;
+
     @GetMapping("/logged-user")
     @ApiOperation(value = "Find Logged User")
     public User findLoggedUser(@AuthenticationPrincipal UserPrincipal userPrincipal) {
         return userService.findById(userPrincipal.getId());
     }
 
-    @RolesAllowed({ "ROLE_USER" })
     @GetMapping("/user")
     @ApiOperation(value = "Find User By Email")
     public User findUserByEmail(@RequestParam(name = "email") @Email String email) {
@@ -54,5 +56,23 @@ public class FindController {
     @ApiOperation(value = "Find All Farms By Logged User")
     public List<Farm> findAllFarmsByLoggedUser(@AuthenticationPrincipal UserPrincipal userPrincipal) {
         return farmService.findAllByUserId(userPrincipal.getId());
+    }
+
+    @GetMapping("/cow/{cowId}")
+    @ApiOperation(value = "Find Cow By Id")
+    public Cow findCowById(@AuthenticationPrincipal UserPrincipal userPrincipal, @PathVariable("cowId") Long cowId) {
+        return cowService.findCowByIdAndUserId(cowId, userPrincipal.getId());
+    }
+
+    @GetMapping("/cow/active/{farmId}")
+    @ApiOperation(value = "Find All Cows By Farm Id And Is Active")
+    public List<Cow> findAllCowsByFarmIdAndIsActive(@AuthenticationPrincipal UserPrincipal userPrincipal, @PathVariable("farmId") Long farmId) {
+        return cowService.findAllByFarmIdAndUserIdAndIsActive(farmId, userPrincipal.getId(), true);
+    }
+
+    @GetMapping("/cow/inactive/{farmId}")
+    @ApiOperation(value = "Find All Cows By Farm Id And Is Not Active")
+    public List<Cow> findAllCowsByFarmIdAndIsNotActive(@AuthenticationPrincipal UserPrincipal userPrincipal, @PathVariable("farmId") Long farmId) {
+        return cowService.findAllByFarmIdAndUserIdAndIsActive(farmId, userPrincipal.getId(), false);
     }
 }

@@ -38,10 +38,9 @@ public class FarmServiceImpl implements FarmService {
     }
 
     @Override
-    public Farm editFarm(EditFarmRequestDto editFarmRequestDto) {
+    public Farm editFarm(Long userId, EditFarmRequestDto editFarmRequestDto) {
 
-        final Farm outdatedFarm = farmRepository.findById(editFarmRequestDto.getId())
-                .orElseThrow(() -> new FarmNotFoundException("Farm Not Found!"));
+        final Farm outdatedFarm = findByIdAndUserId(userId, editFarmRequestDto.getId());
 
         final Farm farm = farmMapper.mapperToEditFarm(outdatedFarm, editFarmRequestDto);
 

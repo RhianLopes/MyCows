@@ -67,7 +67,11 @@ public class FarmServiceImplTest {
     public void editFarm_withSuccess() {
 
         final EditFarmRequestDto editFarmRequestDto = Mockito.mock(EditFarmRequestDto.class);
-        final Farm expectedFarm = Mockito.mock(Farm.class);
+        final Long userId = 1L;
+        final User user = new User()
+                .setId(userId);
+        final Farm expectedFarm = new Farm()
+                .setUser(user);
 
         given(farmRepository.findById(editFarmRequestDto.getId()))
                 .willReturn(Optional.of(expectedFarm));
@@ -78,22 +82,8 @@ public class FarmServiceImplTest {
         given(farmRepository.save(expectedFarm))
                 .willReturn(expectedFarm);
 
-        final Farm resultFarm = farmService.editFarm(editFarmRequestDto);
+        final Farm resultFarm = farmService.editFarm(userId, editFarmRequestDto);
         assertEquals(expectedFarm, resultFarm);
-    }
-
-    @Test
-    public void editFarm_withFarmNotFound_withException() {
-
-        final EditFarmRequestDto editFarmRequestDto = Mockito.mock(EditFarmRequestDto.class);
-        final String expectedMessage = "Farm Not Found!";
-
-        given(farmRepository.findById(editFarmRequestDto.getId()))
-                .willReturn(Optional.empty());
-
-        final Throwable throwable = assertThrows(FarmNotFoundException.class, () ->
-           farmService.editFarm(editFarmRequestDto));
-        assertEquals(expectedMessage, throwable.getMessage());
     }
 
     @Test

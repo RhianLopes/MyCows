@@ -2,7 +2,6 @@ server:
   port: 8000
   servlet:
     context-path: /my-cows
-
 spring:
   profiles:
     active: @activatedProperties@
