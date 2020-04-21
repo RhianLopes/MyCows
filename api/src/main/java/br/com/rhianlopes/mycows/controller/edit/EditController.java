@@ -44,8 +44,8 @@ public class EditController {
 
     @PutMapping("/farm")
     @ApiOperation(value = "Edit Farm infos")
-    public Farm editFarm(@RequestBody @Valid EditFarmRequestDto editUserRequestDto) {
-        return farmService.editFarm(editUserRequestDto);
+    public Farm editFarm(@RequestBody @Valid EditFarmRequestDto editUserRequestDto, @AuthenticationPrincipal UserPrincipal userPrincipal) {
+        return farmService.editFarm(userPrincipal.getId(), editUserRequestDto);
     }
 
     @PutMapping("/cow")

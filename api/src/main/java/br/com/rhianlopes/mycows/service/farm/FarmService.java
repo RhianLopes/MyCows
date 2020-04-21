@@ -14,7 +14,7 @@ public interface FarmService {
 
     Farm registerFarm(Long userId, RegisterFarmRequestDto registerFarmRequestDto);
 
-    Farm editFarm(EditFarmRequestDto editFarmRequestDto);
+    Farm editFarm(Long userId, EditFarmRequestDto editFarmRequestDto);
 
     Farm findByIdAndUserId(Long userId, Long id);
 
