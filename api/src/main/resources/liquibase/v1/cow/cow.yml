@@ -1,0 +1,13 @@
+databaseChangeLog:
+  - changeSet:
+      id: edit-cow-add-column-is_active
+      author: rhian.costa
+      runInTransaction: false
+      runOnChange: true
+      changes:
+        - sqlFile:
+            encoding: utf8
+            path: edit-cow-add-column-is_active.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true

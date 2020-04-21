@@ -1,9 +1,12 @@
 package br.com.rhianlopes.mycows.controller.register;
 
+import br.com.rhianlopes.mycows.controller.register.request.RegisterCowRequestDto;
 import br.com.rhianlopes.mycows.controller.register.request.RegisterFarmRequestDto;
 import br.com.rhianlopes.mycows.controller.userregister.request.RegisterUserRequestDto;
+import br.com.rhianlopes.mycows.domain.Cow;
 import br.com.rhianlopes.mycows.domain.Farm;
 import br.com.rhianlopes.mycows.domain.security.UserPrincipal;
+import br.com.rhianlopes.mycows.service.cow.CowService;
 import br.com.rhianlopes.mycows.service.farm.FarmService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -25,10 +28,19 @@ public class RegisterController {
 
     private final FarmService farmService;
 
+    private final CowService cowService;
+
     @PostMapping("/farm")
     @ResponseStatus(HttpStatus.CREATED)
     @ApiOperation(value = "Register a Farm to Logged User")
     public Farm registerFarm(@AuthenticationPrincipal UserPrincipal userPrincipal, @RequestBody @Valid RegisterFarmRequestDto registerFarmRequestDto) {
         return farmService.registerFarm(userPrincipal.getId(), registerFarmRequestDto);
+    }
+
+    @PostMapping("/cow")
+    @ResponseStatus(HttpStatus.CREATED)
+    @ApiOperation(value = "Register a Cow to Logged User")
+    public Cow registerCow(@AuthenticationPrincipal UserPrincipal userPrincipal, @RequestBody @Valid RegisterCowRequestDto registerCowRequestDto) {
+        return cowService.registerCow(userPrincipal.getId(), registerCowRequestDto);
     }
 }

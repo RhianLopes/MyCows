@@ -19,4 +19,5 @@ public interface FarmService {
     Farm findByIdAndUserId(Long userId, Long id);
 
     List<Farm> findAllByUserId(Long userId);
+
 }
