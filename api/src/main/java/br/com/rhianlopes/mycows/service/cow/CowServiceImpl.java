@@ -66,4 +66,6 @@ public class CowServiceImpl implements CowService {
 
         return cowRepository.findAllByFarmAndIsActive(farm, isActive);
     }
+
+    //TODO: Rhian Lopes da Costa - 20/04/2020 - Do Archive Cow By Cow Id And User Id
 }
