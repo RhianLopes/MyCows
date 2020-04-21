@@ -65,4 +65,10 @@ public class FindController {
     public Cow findCowById(@AuthenticationPrincipal UserPrincipal userPrincipal, @PathVariable("id") Long id) {
         return cowService.findCowByIdAndUserId(id, userPrincipal.getId());
     }
+
+    @GetMapping("/cow/{farmId}")
+    @ApiOperation(value = "Find All Cows By Farm Id")
+    public List<Cow> findAllCowsByFarmId(@AuthenticationPrincipal UserPrincipal userPrincipal, @PathVariable("farmId") Long farmId) {
+        return cowService.findAllByFarmIdAndUserId(farmId, userPrincipal.getId());
+    }
 }

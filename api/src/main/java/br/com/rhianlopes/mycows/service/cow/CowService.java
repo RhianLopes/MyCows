@@ -4,6 +4,8 @@ import br.com.rhianlopes.mycows.controller.edit.request.EditCowRequestDto;
 import br.com.rhianlopes.mycows.controller.register.request.RegisterCowRequestDto;
 import br.com.rhianlopes.mycows.domain.Cow;
 
+import java.util.List;
+
 /**
  * @author rhian.costa
  */
@@ -14,4 +16,6 @@ public interface CowService {
     Cow editCow(Long userId, EditCowRequestDto editCowRequestDto);
 
     Cow findCowByIdAndUserId(Long id, Long userId);
+
+    List<Cow> findAllByFarmIdAndUserId(Long farmId, Long userId);
 }
