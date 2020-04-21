@@ -165,4 +165,9 @@ public class CowServiceImplTest {
         final List<Cow> resultCowList = cowService.findAllByFarmIdAndUserIdAndIsActive(farmId, userId, isActive);
         assertEquals(expectedCowList, resultCowList);
     }
+
+    @Test
+    public void archiveCowByIdAndUserId_withSuccess() {
+
+    }
 }

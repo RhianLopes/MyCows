@@ -71,12 +71,7 @@ public class CowServiceImpl implements CowService {
     @Override
     public Cow archiveCowByIdAndUserId(Long cowId, Long userId) {
 
-        final Cow cow = cowRepository.findById(cowId)
-                .orElseThrow(() -> new CowNotFoundException("Cow Not Found!"));
-
-        if (!userId.equals(cow.getFarm().getUser().getId())) {
-            throw new UserForbiddenException("User Forbidden!");
-        }
+        final Cow cow = findCowByIdAndUserId(cowId, userId);
 
         cow.setIsActive(!cow.getIsActive());
 
