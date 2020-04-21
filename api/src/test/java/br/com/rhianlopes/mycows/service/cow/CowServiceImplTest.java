@@ -69,12 +69,7 @@ public class CowServiceImplTest {
     public void editCow_withSuccess() {
 
         final Long userId = 1L;
-        final User user = new User()
-                .setId(userId);
-        final Farm farm = new Farm()
-                .setUser(user);
-        final Cow expectedCow = new Cow()
-                .setFarm(farm);
+        final Cow expectedCow = mockCowWithUserId(userId);
         final EditCowRequestDto requestDto = Mockito.mock(EditCowRequestDto.class);
 
         given(cowRepository.findById(requestDto.getId()))
@@ -95,12 +90,7 @@ public class CowServiceImplTest {
 
         final Long cowId = 1L;
         final Long userId = 1L;
-        final User user = new User()
-                .setId(userId);
-        final Farm farm = new Farm()
-                .setUser(user);
-        final Cow expectedCow = new Cow()
-                .setFarm(farm);
+        final Cow expectedCow = mockCowWithUserId(userId);
 
         given(cowRepository.findById(cowId))
                 .willReturn(Optional.of(expectedCow));
@@ -130,12 +120,7 @@ public class CowServiceImplTest {
         final Long cowId = 1L;
         final Long userId = 1L;
         final Long wrongUserId = 2L;
-        final User user = new User()
-                .setId(wrongUserId);
-        final Farm farm = new Farm()
-                .setUser(user);
-        final Cow expectedCow = new Cow()
-                .setFarm(farm);
+        final Cow expectedCow = mockCowWithUserId(wrongUserId);
         final String expectedMessage = "User Forbidden!";
 
         given(cowRepository.findById(cowId))
@@ -169,5 +154,19 @@ public class CowServiceImplTest {
     @Test
     public void archiveCowByIdAndUserId_withSuccess() {
 
+        final Long cowId = 1L;
+        final Long userId = 1L;
+
+
+//        given(cowRepository.findById(cowId))
+//                .willReturn()
+    }
+
+    private Cow mockCowWithUserId(Long userId) {
+        final User user = new User().setId(userId);
+
+        final Farm farm = new Farm().setUser(user);
+
+        return new Cow().setFarm(farm);
     }
 }
