@@ -156,10 +156,18 @@ public class CowServiceImplTest {
 
         final Long cowId = 1L;
         final Long userId = 1L;
+        final Cow expectedCow = mockCowWithUserId(userId)
+                .setIsActive(true);
 
+        given(cowRepository.findById(cowId))
+                .willReturn(Optional.of(expectedCow));
 
-//        given(cowRepository.findById(cowId))
-//                .willReturn()
+        given(cowRepository.save(expectedCow))
+                .willReturn(expectedCow);
+
+        final Cow resultCow = cowService.archiveCowByIdAndUserId(cowId, userId);
+        assertFalse(resultCow.getIsActive());
+        assertEquals(expectedCow, resultCow);
     }
 
     private Cow mockCowWithUserId(Long userId) {
