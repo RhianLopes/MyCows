@@ -58,10 +58,10 @@ public class FindController {
         return farmService.findAllByUserId(userPrincipal.getId());
     }
 
-    @GetMapping("/cow/{id}")
+    @GetMapping("/cow/{cowId}")
     @ApiOperation(value = "Find Cow By Id")
-    public Cow findCowById(@AuthenticationPrincipal UserPrincipal userPrincipal, @PathVariable("id") Long id) {
-        return cowService.findCowByIdAndUserId(id, userPrincipal.getId());
+    public Cow findCowById(@AuthenticationPrincipal UserPrincipal userPrincipal, @PathVariable("cowId") Long cowId) {
+        return cowService.findCowByIdAndUserId(cowId, userPrincipal.getId());
     }
 
     @GetMapping("/cow/active/{farmId}")
@@ -70,7 +70,7 @@ public class FindController {
         return cowService.findAllByFarmIdAndUserIdAndIsActive(farmId, userPrincipal.getId(), true);
     }
 
-    @GetMapping("/cow/{farmId}")
+    @GetMapping("/cow/inactive/{farmId}")
     @ApiOperation(value = "Find All Cows By Farm Id And Is Not Active")
     public List<Cow> findAllCowsByFarmIdAndIsNotActive(@AuthenticationPrincipal UserPrincipal userPrincipal, @PathVariable("farmId") Long farmId) {
         return cowService.findAllByFarmIdAndUserIdAndIsActive(farmId, userPrincipal.getId(), false);

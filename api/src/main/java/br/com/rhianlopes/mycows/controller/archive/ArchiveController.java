@@ -25,7 +25,7 @@ public class ArchiveController {
 
     @GetMapping("/cow/{id}")
     @ApiOperation(value = "Archive Cow By Cow Id")
-    public Cow findFarmById(@AuthenticationPrincipal UserPrincipal userPrincipal, @PathVariable("id") Long cowId) {
+    public Cow archiveCowById(@AuthenticationPrincipal UserPrincipal userPrincipal, @PathVariable("id") Long cowId) {
         return cowService.archiveCowByIdAndUserId(cowId, userPrincipal.getId());
     }
 }
