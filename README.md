@@ -7,10 +7,13 @@ MyCows is a project created on 23 Mar 2020, the initial idea of the project is a
 - Java
 - Maven
 - Spring Boot
+- Spring Security
+- JWT
+- Swagger
+- MySQL
 - Spring Data JPA
 - JavaScript
 - ReactJS
-
 
 ## 💻 Commit
 
