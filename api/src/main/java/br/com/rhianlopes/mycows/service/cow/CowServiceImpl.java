@@ -48,9 +48,9 @@ public class CowServiceImpl implements CowService {
     }
 
     @Override
-    public Cow findCowByIdAndUserId(Long id, Long userId) {
+    public Cow findCowByIdAndUserId(Long cowId, Long userId) {
 
-        final Cow cow = cowRepository.findById(id)
+        final Cow cow = cowRepository.findById(cowId)
                 .orElseThrow(() -> new CowNotFoundException("Cow Not Found!"));
 
         if (!userId.equals(cow.getFarm().getUser().getId())) {

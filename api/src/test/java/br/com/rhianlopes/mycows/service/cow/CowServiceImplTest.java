@@ -89,23 +89,43 @@ public class CowServiceImplTest {
     }
 
     @Test
-    public void editCow_withCowNotFound_withException() {
+    public void findCowByIdAndUserId_withSuccess() {
+
+        final Long cowId = 1L;
+        final Long userId = 1L;
+        final User user = new User()
+                .setId(userId);
+        final Farm farm = new Farm()
+                .setUser(user);
+        final Cow expectedCow = new Cow()
+                .setFarm(farm);
+
+        given(cowRepository.findById(cowId))
+                .willReturn(Optional.of(expectedCow));
+
+        final Cow resultCow = cowService.findCowByIdAndUserId(cowId, userId);
+        assertEquals(expectedCow, resultCow);
+    }
+
+    @Test
+    public void findCowByIdAndUserId_withCowNotFound_withException() {
 
         final String expectedMessage = "Cow Not Found!";
-        final EditCowRequestDto requestDto = Mockito.mock(EditCowRequestDto.class);
+        final Long cowId = 1l;
         final Long userId = 1L;
 
-        given(cowRepository.findById(requestDto.getId()))
+        given(cowRepository.findById(cowId))
                 .willReturn(Optional.empty());
 
         Throwable throwable = assertThrows(CowNotFoundException.class, () ->
-                cowService.editCow(userId, requestDto));
+                cowService.findCowByIdAndUserId(cowId, userId));
         assertEquals(expectedMessage, throwable.getMessage());
     }
 
     @Test
-    public void editCow_withUserForbidden_withException() {
+    public void findCowByIdAndUserId_withUserForbidden_withException() {
 
+        final Long cowId = 1L;
         final Long userId = 1L;
         final Long wrongUserId = 2L;
         final User user = new User()
@@ -114,19 +134,14 @@ public class CowServiceImplTest {
                 .setUser(user);
         final Cow expectedCow = new Cow()
                 .setFarm(farm);
-        final EditCowRequestDto requestDto = Mockito.mock(EditCowRequestDto.class);
         final String expectedMessage = "User Forbidden!";
 
-        given(cowRepository.findById(requestDto.getId()))
+        given(cowRepository.findById(cowId))
                 .willReturn(Optional.of(expectedCow));
 
         Throwable throwable = assertThrows(UserForbiddenException.class, () ->
-                cowService.editCow(userId, requestDto));
+                cowService.findCowByIdAndUserId(cowId, userId));
         assertEquals(expectedMessage, throwable.getMessage());
-    }
-
-    @Test
-    public void findCowByIdAndUserId() {
     }
 
     @Test
