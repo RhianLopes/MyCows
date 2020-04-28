@@ -2,13 +2,16 @@ package br.com.rhianlopes.mycows.controller.edit;
 
 import br.com.rhianlopes.mycows.controller.edit.request.EditCowRequestDto;
 import br.com.rhianlopes.mycows.controller.edit.request.EditFarmRequestDto;
+import br.com.rhianlopes.mycows.controller.edit.request.EditMilkRequestDto;
 import br.com.rhianlopes.mycows.controller.edit.request.EditUserRequestDto;
 import br.com.rhianlopes.mycows.domain.Cow;
 import br.com.rhianlopes.mycows.domain.Farm;
+import br.com.rhianlopes.mycows.domain.Milk;
 import br.com.rhianlopes.mycows.domain.User;
 import br.com.rhianlopes.mycows.domain.security.UserPrincipal;
 import br.com.rhianlopes.mycows.service.cow.CowService;
 import br.com.rhianlopes.mycows.service.farm.FarmService;
+import br.com.rhianlopes.mycows.service.milk.MilkService;
 import br.com.rhianlopes.mycows.service.user.UserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -34,23 +37,31 @@ public class EditController {
 
     private final FarmService farmService;
 
+    private final MilkService milkService;
+
     private final CowService cowService;
 
     @PutMapping("/user")
-    @ApiOperation(value = "Edit User infos")
+    @ApiOperation(value = "Edit User info")
     public User editUser(@RequestBody @Valid EditUserRequestDto editUserRequestDto, @AuthenticationPrincipal UserPrincipal userPrincipal) {
         return userService.editUser(userPrincipal.getId(), editUserRequestDto);
     }
 
     @PutMapping("/farm")
-    @ApiOperation(value = "Edit Farm infos")
+    @ApiOperation(value = "Edit Farm info")
     public Farm editFarm(@RequestBody @Valid EditFarmRequestDto editUserRequestDto, @AuthenticationPrincipal UserPrincipal userPrincipal) {
         return farmService.editFarm(userPrincipal.getId(), editUserRequestDto);
     }
 
     @PutMapping("/cow")
-    @ApiOperation(value = "Edit Cow infos")
+    @ApiOperation(value = "Edit Cow info")
     public Cow editCow(@RequestBody @Valid EditCowRequestDto editCowRequestDto, @AuthenticationPrincipal UserPrincipal userPrincipal) {
         return cowService.editCow(userPrincipal.getId(), editCowRequestDto);
+    }
+
+    @PutMapping("/milk")
+    @ApiOperation(value = "Edit Milk info")
+    public Milk editMilk(@RequestBody @Valid EditMilkRequestDto editMilkRequestDto, @AuthenticationPrincipal UserPrincipal userPrincipal) {
+        return milkService.editMilk(userPrincipal.getId(), editMilkRequestDto);
     }
 }
