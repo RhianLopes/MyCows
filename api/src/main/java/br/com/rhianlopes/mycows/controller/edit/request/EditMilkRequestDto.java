@@ -18,7 +18,7 @@ import javax.validation.constraints.Size;
 public class EditMilkRequestDto {
 
     @NotNull
-    private Long cowId;
+    private Long id;
 
     @NotNull
     private Double liters;

@@ -10,4 +10,6 @@ public interface MilkService {
 
     Milk editMilk(Long userId, EditMilkRequestDto editMilkRequestDto);
 
+    Milk findByMilkIdAndUserId(Long milkId, Long userId);
+
 }

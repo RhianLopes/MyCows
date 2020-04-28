@@ -1,5 +1,6 @@
 package br.com.rhianlopes.mycows.mapper;
 
+import br.com.rhianlopes.mycows.controller.edit.request.EditMilkRequestDto;
 import br.com.rhianlopes.mycows.controller.register.request.RegisterMilkRequestDto;
 import br.com.rhianlopes.mycows.domain.Cow;
 import br.com.rhianlopes.mycows.domain.Milk;
@@ -18,5 +19,12 @@ public class MilkMapper {
                 .setCreatedAt(LocalDateTime.now())
                 .setUpdatedAt(LocalDateTime.now())
                 .setCow(cow);
+    }
+
+    public Milk mapperToEditMilk(Milk milk, EditMilkRequestDto requestDto) {
+        return milk
+                .setDescription(requestDto.getDescription())
+                .setLitters(requestDto.getLiters())
+                .setUpdatedAt(LocalDateTime.now());
     }
 }
