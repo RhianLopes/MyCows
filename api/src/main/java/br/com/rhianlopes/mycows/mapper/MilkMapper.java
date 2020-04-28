@@ -18,6 +18,5 @@ public class MilkMapper {
                 .setCreatedAt(LocalDateTime.now())
                 .setUpdatedAt(LocalDateTime.now())
                 .setCow(cow);
-
-    } 
+    }
 }
