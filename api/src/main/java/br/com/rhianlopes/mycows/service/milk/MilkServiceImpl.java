@@ -62,7 +62,7 @@ public class MilkServiceImpl implements MilkService {
     }
 
     @Override
-    public List<Milk> findAllByFilter(LocalDate initialDate, LocalDate finalDate) {
+    public List<Milk> findAllByFilter(Long userId, LocalDate initialDate, LocalDate finalDate) {
         return null;
     }
 

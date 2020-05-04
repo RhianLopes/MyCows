@@ -15,6 +15,6 @@ public interface MilkService {
 
     Milk findByMilkIdAndUserId(Long milkId, Long userId);
 
-    List<Milk> findAllByFilter(LocalDate initialDate, LocalDate finalDate);
+    List<Milk> findAllByFilter(Long userId, LocalDate initialDate, LocalDate finalDate);
 
 }
