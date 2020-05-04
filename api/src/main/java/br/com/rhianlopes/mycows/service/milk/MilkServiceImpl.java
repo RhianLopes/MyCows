@@ -12,6 +12,9 @@ import br.com.rhianlopes.mycows.service.cow.CowService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.util.List;
+
 /**
  * @author rhian.costa
  */
@@ -56,6 +59,11 @@ public class MilkServiceImpl implements MilkService {
         }
 
         return milk;
+    }
+
+    @Override
+    public List<Milk> findAllByFilter(LocalDate initialDate, LocalDate finalDate) {
+        return null;
     }
 
 }

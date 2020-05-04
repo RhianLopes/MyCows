@@ -4,6 +4,9 @@ import br.com.rhianlopes.mycows.controller.edit.request.EditMilkRequestDto;
 import br.com.rhianlopes.mycows.controller.register.request.RegisterMilkRequestDto;
 import br.com.rhianlopes.mycows.domain.Milk;
 
+import java.time.LocalDate;
+import java.util.List;
+
 public interface MilkService {
 
     Milk registerMilk(Long userId, RegisterMilkRequestDto registerMilkRequestDto);
@@ -11,5 +14,7 @@ public interface MilkService {
     Milk editMilk(Long userId, EditMilkRequestDto editMilkRequestDto);
 
     Milk findByMilkIdAndUserId(Long milkId, Long userId);
+
+    List<Milk> findAllByFilter(LocalDate initialDate, LocalDate finalDate);
 
 }
