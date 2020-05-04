@@ -2,20 +2,23 @@ package br.com.rhianlopes.mycows.controller.find;
 
 import br.com.rhianlopes.mycows.domain.Cow;
 import br.com.rhianlopes.mycows.domain.Farm;
+import br.com.rhianlopes.mycows.domain.Milk;
 import br.com.rhianlopes.mycows.domain.User;
 import br.com.rhianlopes.mycows.domain.security.UserPrincipal;
 import br.com.rhianlopes.mycows.service.cow.CowService;
 import br.com.rhianlopes.mycows.service.farm.FarmService;
+import br.com.rhianlopes.mycows.service.milk.MilkService;
 import br.com.rhianlopes.mycows.service.user.UserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
-import javax.annotation.security.RolesAllowed;
 import javax.validation.constraints.Email;
 import java.util.List;
 
@@ -31,6 +34,8 @@ public class FindController {
     private final UserService userService;
 
     private final FarmService farmService;
+
+    private final MilkService milkService;
 
     private final CowService cowService;
 
@@ -74,5 +79,11 @@ public class FindController {
     @ApiOperation(value = "Find All Cows By Farm Id And Is Not Active")
     public List<Cow> findAllCowsByFarmIdAndIsNotActive(@AuthenticationPrincipal UserPrincipal userPrincipal, @PathVariable("farmId") Long farmId) {
         return cowService.findAllByFarmIdAndUserIdAndIsActive(farmId, userPrincipal.getId(), false);
+    }
+
+    @GetMapping("/milk/{milkId}")
+    @ApiOperation(value = "Find Milk By Id")
+    public Milk findMilkById(@AuthenticationPrincipal UserPrincipal userPrincipal, @PathVariable("milkId") Long milkId) {
+        return milkService.findByMilkIdAndUserId(milkId, userPrincipal.getId());
     }
 }
