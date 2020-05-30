@@ -1,6 +1,8 @@
 package br.com.rhianlopes.mycows.service.milk;
 
+import br.com.rhianlopes.mycows.component.specification.MilkSpecification;
 import br.com.rhianlopes.mycows.controller.edit.request.EditMilkRequestDto;
+import br.com.rhianlopes.mycows.controller.find.request.FindAllMilkFilterRequestDto;
 import br.com.rhianlopes.mycows.controller.register.request.RegisterMilkRequestDto;
 import br.com.rhianlopes.mycows.domain.Cow;
 import br.com.rhianlopes.mycows.domain.Milk;
@@ -10,9 +12,9 @@ import br.com.rhianlopes.mycows.mapper.MilkMapper;
 import br.com.rhianlopes.mycows.repository.MilkRepository;
 import br.com.rhianlopes.mycows.service.cow.CowService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
 import java.util.List;
 
 /**
@@ -21,6 +23,8 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class MilkServiceImpl implements MilkService {
+
+    private final MilkSpecification milkSpecification;
 
     private final MilkRepository milkRepository;
 
@@ -62,7 +66,12 @@ public class MilkServiceImpl implements MilkService {
     }
 
     @Override
-    public List<Milk> findAllByFilter(Long userId, LocalDate initialDate, LocalDate finalDate) {
+    public List<Milk> findAllByFilter(Long userId, FindAllMilkFilterRequestDto requestDto) {
+
+        final Cow cow = cowService.findCowByIdAndUserId(userId, requestDto.getCowId());
+
+        final Specification<Milk> specification = milkSpecification.byFilter(requestDto, cow)
+
         return null;
     }
 
