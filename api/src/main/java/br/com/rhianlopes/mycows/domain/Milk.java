@@ -27,7 +27,7 @@ public class Milk {
     private Cow cow;
 
     @NotNull
-    private Double litters;
+    private Double liters;
 
     @NotNull
     @Size(max = 200)

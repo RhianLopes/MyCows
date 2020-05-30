@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 
 /**
@@ -16,6 +17,7 @@ import java.time.LocalDate;
 @Accessors(chain = true)
 public class FindAllMilkFilterRequestDto {
 
+    @NotNull
     private Long cowId;
 
     private LocalDate initialDate;

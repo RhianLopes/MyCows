@@ -1,5 +1,6 @@
 package br.com.rhianlopes.mycows.controller.find;
 
+import br.com.rhianlopes.mycows.controller.find.request.FindAllMilkFilterRequestDto;
 import br.com.rhianlopes.mycows.domain.Cow;
 import br.com.rhianlopes.mycows.domain.Farm;
 import br.com.rhianlopes.mycows.domain.Milk;
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
 import javax.validation.constraints.Email;
 import java.util.List;
 
@@ -86,4 +88,11 @@ public class FindController {
     public Milk findMilkById(@AuthenticationPrincipal UserPrincipal userPrincipal, @PathVariable("milkId") Long milkId) {
         return milkService.findByMilkIdAndUserId(milkId, userPrincipal.getId());
     }
+
+    @GetMapping("/milk")
+    @ApiOperation(value = "Find Milk By Id")
+    public List<Milk> findAllByFilter(@AuthenticationPrincipal UserPrincipal userPrincipal, @Valid FindAllMilkFilterRequestDto findAllMilkFilterRequestDto) {
+        return milkService.findAllByFilter(userPrincipal.getId(), findAllMilkFilterRequestDto);
+    }
+
 }
