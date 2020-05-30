@@ -70,9 +70,9 @@ public class MilkServiceImpl implements MilkService {
 
         final Cow cow = cowService.findCowByIdAndUserId(userId, requestDto.getCowId());
 
-        final Specification<Milk> specification = milkSpecification.byFilter(requestDto, cow)
+        final Specification<Milk> specification = milkSpecification.byFilter(requestDto, cow);
 
-        return null;
+        return milkRepository.findAll(specification);
     }
 
 }
